@@ -1,0 +1,17 @@
+# Node modules
+/node_modules
+
+# Logs
+*.log
+
+# SQLite DBs
+*.sqlite3
+
+# Build products
+/dist
+
+# Jest coverage report
+/coverage/*
+
+# Dotenv env settings
+.env
