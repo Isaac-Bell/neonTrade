@@ -1,36 +1,28 @@
-# Boilerplate: Fullstack with Sass
+# 🚀 NeonTrade
 
-## Setup
+🌟 **A Full-Stack Trading App with Deriv API Integration**
 
-### What's included
+NeonTrade is a cutting-edge trading application built using modern web technologies. This app utilizes the Deriv API to provide a seamless trading experience, complete with real-time market data, trading functionality, and a selection of trading bots.
 
-This repo includes:
+## ✨ Features
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* frontend routing via react-router
-* an auth0 setup waiting to be configured
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Vitest and testing library
-* configuration for server-side debugging in VS Code
-* configuration for preprocessing css with tailwind support
+- 🧩 **Deriv API Integration**: Utilizes the Deriv API for real-time market data and trading functionality.
+- 🌐 **Three.js Visuals**: Stunning three-dimensional visuals to enhance the trading experience.
+- 🤖 **Selection of Trading Bots**: Choose from different automation scripts or build your own.
+- 🔒 **User Authentication**: Secure login and authentication using Auth0.
+- 📱 **Responsive Design**: Mobile-friendly and desktop-ready interface.
 
-### Installation
+## 🛠️ Technologies Used
 
-#### **From the Github UI**
+- **Frontend**: React, Three.js, Vite
+- **Backend**: Node.js, Express, Deriv API
+- **Database**: SQLite
+- **Authentication**: Auth0
 
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
+## 🏁 Getting Started
 
-#### **From the command line**
+1. **Clone the repository**: 
+   ```sh
+   git clone https://github.com/Isaac-Bell/neonTrade.git
 
-```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
-```
 
-You can find the server running on [http://localhost:3000](http://localhost:3000) and the client running on [http://localhost:5173](http://localhost:5173).
-
----
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=boilerplate-fullstack)
