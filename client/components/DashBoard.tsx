@@ -1,12 +1,12 @@
 import React from 'react'
 import Balance from './Balance'
-import TradeHistory from './TradeHistory'
+import TransactionHistory from './TransactionHistory'
 
 const Dashboard = () => {
   return (
-    <div className="dashboard-container">
-      <Balance balance={1000} currency="USD" />
-      <TradeHistory trades={[]} />
+    <div className="dashboard">
+      <Balance />
+      <TransactionHistory />
     </div>
   )
 }

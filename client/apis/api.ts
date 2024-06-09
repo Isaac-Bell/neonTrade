@@ -5,7 +5,7 @@ import { isRouteErrorResponse } from 'react-router-dom'
 const api = axios.create({
   baseURL: 'https://api.deriv.com',
   headers: {
-    Authorization: 'Bearer YOUR_API_TOKEN',
+    Authorization: '***********PVea',
   },
 })
 
@@ -17,4 +17,10 @@ export const getBalance = async () => {
 export const getTradeHistory = async () => {
   const response = await api.get('/trade/history')
   return response.data
+}
+
+export const getTransactions = async () => {
+  const reponse = await fetch('https://example.com/transactions')
+  const data = await reponse.json()
+  return data
 }

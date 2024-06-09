@@ -16,3 +16,42 @@
   text-align: center;
   padding: 20px;
 }
+
+.balance-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.balance-container h2 {
+  margin-top: 0;
+}
+
+.currency-selector {
+  margin-bottom: 20px;
+}
+
+.transaction-history {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-history li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.transaction-history li:last-child {
+  border-bottom: none;
+}
