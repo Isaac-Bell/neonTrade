@@ -6,11 +6,11 @@ import Header from './Header'
 
 const Layout: React.FC = () => {
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <SideBar />
-      <div className="flex flex-grow flex-col">
+      <div className="ml-64 ml-64 flex flex-grow">
         <Header />
-        <main className="ml-64 h-auto space-y-8 p-4 pt-20">
+        <main className="flex-grow overflow-auto p-4">
           <Outlet />
         </main>
       </div>

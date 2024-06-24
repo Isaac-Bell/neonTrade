@@ -1,12 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
+body {
+  display: flex;
+}
 .container {
   display: flex;
   flex-direction: column;
