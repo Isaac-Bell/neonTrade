@@ -1,4 +1,5 @@
 import React from 'react'
+import { NumberFormatter as NumberFormat } from '@internationalized/number'
 
 interface CurrencyFormatterProps {
   amount: number
@@ -9,12 +10,12 @@ const CurrencyFormatter: React.FC<CurrencyFormatterProps> = ({
   amount,
   currency,
 }) => {
-  const formattedAmount = new Intl.NumberFormat(`en-${currency}`, {
+  const formattedAmount = new NumberFormat(`en-US`, {
     style: 'currency',
     currency,
   }).format(amount)
 
-  return <span>{formattedAmount} </span>
+  return <span>{formattedAmount}</span>
 }
 
 export default CurrencyFormatter

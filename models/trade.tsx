@@ -1,7 +1,11 @@
 export interface Trade {
-  id: number
-  date: string
-  amount: number
+  tradeId: string
   instrument: string
-  result: number
+  date: string
+  result: string
+  timestamp: string
+  type: string
+  quantity: number
+  price: number
+  status: string
 }

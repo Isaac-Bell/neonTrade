@@ -1,0 +1,18 @@
+.transaction-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card h2 {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.transaction-card p {
+  font-size: 16px;
+  color: #666;
+}

@@ -1,25 +1,21 @@
+// src/components/Layout.tsx
+import React from 'react'
 import { Outlet } from 'react-router-dom'
+import SideBar from './SideBar.tsx'
+import Header from './Header'
 
-// app_id 1089 is for testing, create your own app_id and use it here.
-// go to api.deriv.com to register your own app.
-const connection = new WebSocket(
-  'wss://ws.derivws.com/websockets/v3?app_id=1089',
-)
-const api = new DerivAPI({ connection })
-const basic = api.basic
-
-basic.ping().then(console.log)
-
-export default function Layout() {
+const Layout: React.FC = () => {
   return (
-    <>
-      <header>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-      </header>
-      <main>
-        <Outlet />
-      </main>
-      <footer></footer>
-    </>
+    <div className="flex">
+      <SideBar />
+      <div className="flex flex-grow flex-col">
+        <Header />
+        <main className="ml-64 h-auto space-y-8 p-4 pt-20">
+          <Outlet />
+        </main>
+      </div>
+    </div>
   )
 }
+
+export default Layout

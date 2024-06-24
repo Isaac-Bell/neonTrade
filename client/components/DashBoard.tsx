@@ -1,12 +1,16 @@
 import React from 'react'
-import Balance from './Balance'
-import TransactionHistory from './TransactionHistory'
+import CustomLineChart from '../components/CustomLineChart'
+import TradeHistory from './TradeHistory'
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   return (
-    <div className="dashboard">
-      <Balance />
-      <TransactionHistory />
+    <div className="p-4">
+      <h1 className="mb-4 space-y-8 text-2xl font-bold">Dashboard</h1>
+      <CustomLineChart />
+      {/* <AccountBalance /> */}
+      {/* <CurrentTrades /> */}
+      {/* <PerformanceMetrics /> */}
+      <TradeHistory />
     </div>
   )
 }

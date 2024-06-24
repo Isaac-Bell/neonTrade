@@ -1,26 +1,25 @@
+import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import { response } from 'express'
-import { isRouteErrorResponse } from 'react-router-dom'
+import { Trade } from '../../models/trade'
 
-const api = axios.create({
-  baseURL: 'https://api.deriv.com',
-  headers: {
-    Authorization: '***********PVea',
-  },
-})
-
-export const getBalance = async () => {
-  const reponse = await api.get('/account/balance')
-  return reponse.data
-}
-
-export const getTradeHistory = async () => {
-  const response = await api.get('/trade/history')
-  return response.data
-}
-
-export const getTransactions = async () => {
-  const reponse = await fetch('https://example.com/transactions')
-  const data = await reponse.json()
+// Function to fetch trade history
+const fetchTradeHistory = async (): Promise<Trade[]> => {
+  const { data } = await axios.get('/api/trades')
   return data
+}
+
+// Hook to use trade history
+export const useTradeHistory = () => {
+  return useQuery<Trade[], Error>('tradeHistory', fetchTradeHistory)
+}
+
+// Function to fetch current trades (you can define it as per your needs)
+const fetchCurrentTrades = async (): Promise<Trade[]> => {
+  const { data } = await axios.get('/api/current-trades')
+  return data
+}
+
+// Hook to use current trades
+export const useGetCurrentTrades = () => {
+  return useQuery<Trade[], Error>('currentTrades', fetchCurrentTrades)
 }
