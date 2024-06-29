@@ -19,6 +19,23 @@ body {
   align-items: center;
 }
 
+.transition-width {
+  transition: width 0.3s;
+}
+
+.transition-margin {
+  transition: margin-left 0.3s;
+}
+
+/* Add to your global CSS file or Tailwind config */
+.fixed {
+  transition: width 0.3s ease;
+}
+
+.lg\:hidden {
+  transition: display 0.3s ease;
+}
+
 .submitBtn {
   background-color: #2eaaaa;
   border: 0;

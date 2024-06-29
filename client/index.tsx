@@ -4,12 +4,13 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import routes from './routes'
 import { Auth0Provider } from '@auth0/auth0-react'
+import { SidebarProvider } from './components/SidebarContext'
 
 const router = createBrowserRouter(routes)
 const queryClient = new QueryClient()
 
 document.addEventListener('DOMContentLoaded', () => {
-  createRoot(document.getElementById('app') as HTMLElement).render(
+  createRoot(document.getElementById('layout') as HTMLElement).render(
     <Auth0Provider
       domain="piwakawaka-2024-isaac.au.auth0.com"
       clientId="eJw3cfuzST9Lba04S6CV1d6PiCuJVROd"
@@ -19,8 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }}
     >
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools />
+        <SidebarProvider>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools />
+        </SidebarProvider>
       </QueryClientProvider>
     </Auth0Provider>,
   )
