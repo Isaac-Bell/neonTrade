@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { setToken } from '../utils/auth'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Login: React.FC = () => {
+  const { loginWithRedirect } = useAuth0()
+
   const [token, setTokenState] = useState('')
 
   const handleLogin = () => {
@@ -21,7 +24,7 @@ const Login: React.FC = () => {
           className="mb-4 w-full rounded p-2 text-black"
         />
         <button
-          onClick={handleLogin}
+          onClick={() => loginWithRedirect()}
           className="w-full rounded bg-green-500 p-2 text-black"
         >
           Login
