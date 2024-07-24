@@ -1,19 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
-  FaTachometerAlt,
-  FaBalanceScale,
-  FaExchangeAlt,
-  FaChartLine,
-  FaRegChartBar,
-  FaHistory,
-  FaRobot,
-  FaCogs,
-  FaEdit,
-  FaSave,
-  FaUser,
-  FaShieldAlt,
-  FaBell,
+  FaTachometerAlt as IconDashboard,
+  FaBalanceScale as IconAccountBalance,
+  FaExchangeAlt as IconCurrentTrades,
+  FaChartLine as IconMarketTrends,
+  FaRegChartBar as IconPerformanceMetrics,
+  FaHistory as IconTradeHistory,
+  FaRobot as IconActiveBots,
+  FaCogs as IconTradeControls,
+  FaEdit as IconStrategyForm,
+  FaSave as IconSavedStrategies,
+  FaUser as IconProfileSettings,
+  FaShieldAlt as IconRiskManagement,
+  FaBell as IconNotificationPreferences,
 } from 'react-icons/fa'
 
 const Sidebar = ({ isOpen }) => {
@@ -28,85 +28,116 @@ const Sidebar = ({ isOpen }) => {
         <nav className="mt-10">
           <Link
             to="/dashboard"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-dashboard" /> {isOpen && 'Dashboard'}
+            <IconDashboard />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>Dashboard</span>
           </Link>
           <Link
             to="/account-balance"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-account-balance" /> {isOpen && 'Account Balance'}
+            <IconAccountBalance />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Account Balance
+            </span>
           </Link>
           <Link
             to="/current-trades"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-current-trades" /> {isOpen && 'Current Trades'}
+            <IconCurrentTrades />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Current Trades
+            </span>
           </Link>
           <Link
             to="/market-trends"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-market-trends" /> {isOpen && 'Market Trends'}
+            <IconMarketTrends />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Market Trends
+            </span>
           </Link>
           <Link
             to="/performance-metrics"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-performance-metrics" />{' '}
-            {isOpen && 'Performance Metrics'}
+            <IconPerformanceMetrics />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Performance Metrics
+            </span>
           </Link>
           <Link
             to="/trade-history"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-trade-history" /> {isOpen && 'Trade History'}
+            <IconTradeHistory />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Trade History
+            </span>
           </Link>
           <Link
             to="/active-bots"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-active-bots" /> {isOpen && 'Active Bots'}
+            <IconActiveBots />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>Active Bots</span>
           </Link>
           <Link
             to="/trade-controls"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-trade-controls" /> {isOpen && 'Trade Controls'}
+            <IconTradeControls />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Trade Controls
+            </span>
           </Link>
           <Link
             to="/strategy-form"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-strategy-form" /> {isOpen && 'Strategy Form'}
+            <IconStrategyForm />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Strategy Form
+            </span>
           </Link>
           <Link
             to="/saved-strategies"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-saved-strategies" />{' '}
-            {isOpen && 'Saved Strategies'}
+            <IconSavedStrategies />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Saved Strategies
+            </span>
           </Link>
           <Link
             to="/profile-settings"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-profile-settings" />{' '}
-            {isOpen && 'Profile Settings'}
+            <IconProfileSettings />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Profile Settings
+            </span>
           </Link>
           <Link
             to="/risk-management"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-risk-management" /> {isOpen && 'Risk Management'}
+            <IconRiskManagement />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Risk Management
+            </span>
           </Link>
           <Link
             to="/notification-preferences"
-            className="block rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
+            className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
-            <i className="icon-notification-preferences" />{' '}
-            {isOpen && 'Notification Preferences'}
+            <IconNotificationPreferences />
+            <span className={`flex-1 ${!isOpen && 'hidden'}`}>
+              Notification Preferences
+            </span>
           </Link>
         </nav>
       </div>
