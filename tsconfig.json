@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
-    "types": ["vite/client"],
-    "target": "es2020", 
-    "jsx": "react-jsx",
-    "module": "ES2020",
-    "moduleResolution": "Bundler", 
-    "noEmit": true,
-    "isolatedModules": true, 
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "skipLibCheck": true
-  }
+    "types": ["vite/client"],  // This includes Vite-specific types
+    "target": "es2020",  // Specifies ECMAScript target version
+    "jsx": "react-jsx",  // JSX code is transformed using the React 17 transform
+    "module": "es2020",  // Specifies module code generation
+    "moduleResolution": "node",  // Specifies module resolution strategy
+    "noEmit": true,  // Disables emitting files from the compiler
+    "isolatedModules": true,  // Ensures each file can be safely transpiled without relying on other files
+    "esModuleInterop": true,  // Ensures compatibility with ES modules
+    "forceConsistentCasingInFileNames": true,  // Disallows inconsistencies in file casing
+    "strict": true,  // Enables all strict type-checking options
+    "allowImportingTsExtensions": true,  // Allows importing TypeScript files with extensions
+    "allowJs": true,  // Allows JavaScript files to be compiled
+    "skipLibCheck": true,  // Skips type checking of declaration files
+    "resolveJsonModule": true,  // Allows importing JSON files as modules
+    "outDir": "./dist"  // Specifies the output directory for emitted files
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],  // Specifies files to include in compilation
+  "exclude": ["node_modules"]  // Excludes node_modules from compilation
 }
