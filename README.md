@@ -28,6 +28,31 @@ Welcome to the neonTrade project! This is a collaborative effort to build an adv
   - **Bollinger Bands**: Uses a moving average and two standard deviations to create upper and lower bands, indicating volatility and potential reversal points.
   - **MACD (Moving Average Convergence Divergence)**: Combines moving averages to show changes in strength, direction, momentum, and duration of a trend.
   - **Fibonacci Retracement**: Uses horizontal lines to indicate areas of support or resistance at the key Fibonacci levels before the price continues in the original direction.
+ 
+  - ### 📊 Trading Strategies Library
+
+Our neonTrade Bot aims to include an intuitive and robust library of various trading strategies based on well-known technical analysis techniques. This library will allow users to select, customize, and deploy strategies that best fit their trading goals. Here are some of the strategies we plan to implement:
+
+- **Moving Average Crossover**: A strategy that involves tracking two moving averages of different lengths (e.g., 50-day and 200-day). When the shorter moving average crosses above the longer one, it signals a potential buy, and vice versa for a sell signal.
+
+- **RSI (Relative Strength Index)**: This momentum oscillator measures the speed and change of price movements. It ranges from 0 to 100 and is used to identify overbought or oversold conditions in a market.
+
+- **Bollinger Bands**: A strategy that uses a volatility indicator consisting of a middle band (a simple moving average) and two outer bands (standard deviations). It helps traders identify potential overbought and oversold conditions based on price movements relative to the bands.
+
+- **MACD (Moving Average Convergence Divergence)**: This strategy involves tracking the difference between two moving averages (typically the 12-day and 26-day EMA) and a signal line (9-day EMA). It helps traders identify potential buy and sell signals based on crossovers and divergences.
+
+- **Fibonacci Retracement**: A technique that uses horizontal lines to indicate areas of support or resistance at the key Fibonacci levels before the price continues in the original direction. It's used to identify potential reversal levels.
+
+- **Ichimoku Cloud**: A comprehensive indicator that defines support and resistance, identifies trend direction, gauges momentum, and provides trading signals. The cloud component identifies likely support and resistance levels.
+
+- **Trend Following**: A strategy that seeks to capitalize on the continuation of existing market trends by identifying and following trends in the market, either upward or downward.
+
+- **Breakout Strategy**: This strategy aims to enter the market when the price breaks out of a defined range or level of resistance/support. Breakouts are often followed by significant price movements, offering potential for profits.
+
+- **Scalping**: A high-frequency trading strategy that involves making dozens or hundreds of trades within a day to "scalp" a small profit from each.
+
+These strategies will be integrated into the neonTrade Bot to provide a wide array of trading techniques, allowing users to tailor their trading approach to their individual preferences and market conditions.
+
 
 ## 🏗️ Project Structure
 
