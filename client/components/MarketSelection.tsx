@@ -1,14 +1,24 @@
+// MarketSelection.tsx
 import React, { useEffect, useState } from 'react'
-import { fetchActiveSymbols } from '../apis/api'
+import { fetchActiveSymbols } from './Symbols'
 
-const MarketSelection = ({ selectedMarket, setSelectedMarket }) => {
-  const [markets, setMarkets] = useState([])
+interface MarketSelectionProps {
+  selectedMarket: string
+  setSelectedMarket: (market: string) => void
+}
+
+const MarketSelection: React.FC<MarketSelectionProps> = ({
+  selectedMarket,
+  setSelectedMarket,
+}) => {
+  const [markets, setMarkets] = useState<
+    { symbol: string; display_name: string }[]
+  >([])
 
   useEffect(() => {
     async function loadMarkets() {
       try {
         const marketsData = await fetchActiveSymbols()
-        console.log(marketsData)
         setMarkets(marketsData)
       } catch (error) {
         console.error('Error loading markets:', error)

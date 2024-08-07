@@ -5,9 +5,10 @@ import AccountBalance from './AccountBalance'
 import MarketSelection from './MarketSelection'
 import TradeAmountInput from './TradeAmount'
 import MartingaleTrading from './MartingaleTrading'
+import ActiveSymbols from './Symbols'
 
 const Dashboard: React.FC = () => {
-  const [selectedMarket, setSelectedMarket] = useState('forex')
+  const [selectedMarket, setSelectedMarket] = useState('')
   const [tradeAmount, setTradeAmount] = useState(10)
   const markets = ['forex', 'commodities', 'indices', 'crypto', 'synthentic']
 
@@ -22,7 +23,6 @@ const Dashboard: React.FC = () => {
 
       <div>
         <MarketSelection
-          markets={markets}
           selectedMarket={selectedMarket}
           setSelectedMarket={setSelectedMarket}
         />
