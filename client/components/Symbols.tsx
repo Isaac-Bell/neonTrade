@@ -4,6 +4,11 @@ import { useEffect, useState } from 'react'
 interface Symbol {
   display_name: string
   symbol: string
+  market: string
+  market_display_name: string
+  subgroup: string
+  subgroup_display_name: string
+  symbol_type: string 
 }
 
 export const fetchActiveSymbols = async (): Promise<symbol[]> => {
