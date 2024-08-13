@@ -9,3 +9,32 @@ export interface Trade {
   price: number
   status: string
 }
+
+
+// Market information
+export interface Symbol {
+  display_name: string
+  symbol: string
+  market: string
+  market_display_name: string
+  subgroup: string
+  subgroup_display_name: string
+  symbol_type: string 
+}
+
+
+//Price Proposal 
+export interface PriceProposal {
+  proposal: number 
+  amount: number 
+  barrier?: string
+  basis?: string 
+  contract_type: string 
+  currency: string
+  duration?: number 
+  duration_unit?: string 
+  symbol: string 
+  req_id?: number 
+
+}
+

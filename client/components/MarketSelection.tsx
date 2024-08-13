@@ -1,6 +1,7 @@
 // MarketSelection.tsx
 import React, { useEffect, useState } from 'react'
 import { fetchActiveSymbols } from './Symbols'
+import { Symbol } from '../../models/trade'
 
 interface MarketSelectionProps {
   selectedMarket: string
@@ -12,7 +13,7 @@ const MarketSelection: React.FC<MarketSelectionProps> = ({
   setSelectedMarket,
 }) => {
   const [markets, setMarkets] = useState<
-    { symbol: string; display_name: string }[]
+    Symbol []
   >([])
 
   useEffect(() => {
@@ -30,6 +31,8 @@ const MarketSelection: React.FC<MarketSelectionProps> = ({
   return (
     <div>
       <h3>Select Market</h3>
+      <form > 
+
       <select
         value={selectedMarket}
         onChange={(e) => setSelectedMarket(e.target.value)}
@@ -40,6 +43,18 @@ const MarketSelection: React.FC<MarketSelectionProps> = ({
           </option>
         ))}
       </select>
+      <select value={selectedMarket}   onChange={(e) => setSelectedMarket(e.target.value)}> 
+        {markets.map((market) => (
+          <option key={market.market_display_name} value={market.market}> 
+          {market.market_display_name} </option>
+        ))}
+      </select>
+
+      </form>
+
+      <div> 
+        <h2> Markets selected: {selectedMarket} </h2>
+      </div>
     </div>
   )
 }
