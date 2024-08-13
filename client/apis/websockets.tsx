@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-const WebSocketConnection = ({ onMessage }) => {
+const WebSocketConnection = ({ authToken, messageToSend, onMessage }) => {
   useEffect(() => {
     const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=62894')
 
     ws.onopen = () => {
       console.log('WebSocket Connected')
-      ws.send(JSON.stringify({ authorize: 'R8yyDzZYKW8kyyv' }))
+
+      // First, authorize the connection
+      ws.send(JSON.stringify({ authorize: authToken }))
+
+      // If there is a message to send after authorization
+      if (messageToSend) {
+        ws.send(messageToSend)
+      }
     }
 
     ws.onmessage = (event) => {
@@ -21,12 +28,9 @@ const WebSocketConnection = ({ onMessage }) => {
     return () => {
       ws.close()
     }
-  }, [onMessage])
+  }, [authToken, messageToSend, onMessage])
 
   return null
 }
 
 export default WebSocketConnection
-
-// token R8yyDzZYKW8kyyv
-// neonTrade

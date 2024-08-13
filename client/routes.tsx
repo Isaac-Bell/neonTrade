@@ -23,7 +23,7 @@ const routes = createRoutesFromElements(
     <Route path="current-trades" element={<CurrentTrades />} />
     <Route path="dashboard" element={<Dashboard />} />
     <Route path="market-trends" element={<PriceChart />} />
-    {/* <Route path="performance-metrics" element={<PerformanceMetrics />} /> */}
+    <Route path="performance-metrics" element={<PerformanceMetrics />} />
     <Route path="ticks-history" element={<TicksHistory />} />
     {/* <Route path="active-bots" element={<ActiveBots />} />
     <Route path="trade-controls" element={<TradeControls />} />

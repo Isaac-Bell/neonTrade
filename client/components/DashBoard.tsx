@@ -6,6 +6,7 @@ import TradeAmountInput from './TradeAmount'
 import MartingaleTrading from './MartingaleTrading'
 import ActiveSymbols from './Symbols'
 import TicksHistory from './TicksHistory'
+import WebSocketTestComponent from './WebsocketTest'
 
 const Dashboard: React.FC = () => {
   const [selectedMarket, setSelectedMarket] = useState('')
