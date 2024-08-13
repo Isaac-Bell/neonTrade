@@ -1,11 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const Login: React.FC = () => {
-  const navigate = useNavigate()
   
   const handleLogin = () => {
-    const appId = 'your_app_id' // Replace with your Deriv app ID
+    const appId = '62894' 
     const authUrl = `https://oauth.deriv.com/oauth2/authorize?app_id=${appId}`
     window.location.href = authUrl
   }
