@@ -39,7 +39,7 @@ const AccountBalance = () => {
   }, [])
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" >
       <h3 className="mb-4 pt-4 text-2xl font-bold dark:text-white">
         Account Balance
       </h3>

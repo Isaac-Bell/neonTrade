@@ -38,3 +38,23 @@ export interface PriceProposal {
 
 }
 
+
+export interface TickHistoryRequest {
+  ticks_history:     string;
+    adjust_start_time: number;
+    count:             number;
+    end:               string;
+    start:             number;
+    style:             string;
+    subscribe?: number 
+}
+
+export interface TickHistory {
+  prices: number[]
+  times: number[]
+}
+
+export interface TickHistoryResponse {
+  history: TickHistory 
+}
+

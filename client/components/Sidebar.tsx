@@ -70,12 +70,12 @@ const Sidebar = ({ isOpen }) => {
             </span>
           </Link>
           <Link
-            to="/trade-history"
+            to="/ticks-history"
             className="flex items-center space-x-2 rounded px-4 py-2.5 transition duration-200 hover:bg-gray-800 hover:text-white"
           >
             <IconTradeHistory />
             <span className={`flex-1 ${!isOpen && 'hidden'}`}>
-              Trade History
+              Ticks History
             </span>
           </Link>
           <Link
