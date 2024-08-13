@@ -2,7 +2,7 @@
 
 🌟 **A Full-Stack Trading App with Deriv API Integration**
 
-Welcome to the neonTrade project! This is a collaborative effort to build an advanced trading bot for the Deriv platform. The bot leverages a Martingale strategy and aims to evolve with features like machine learning and copy trading. 
+Welcome to the neonTrade project! This is a collaborative effort to build an advanced trading bot using the Deriv platform. The App seeks to serve communities by making advanced trading easy, even just the click of a button! 
 
 ## 🚀 Project Overview
 
@@ -11,7 +11,7 @@ Welcome to the neonTrade project! This is a collaborative effort to build an adv
 ### 🛠 Features
 
 - **Real-Time Market Data**: Fetch and display real-time market data using WebSockets.
-- **Martingale Strategy**: Implement a Martingale strategy for trading.
+- **Diverse Strategy**: Implement diverse  strategies for automated trading trading.
 - **Account Balance Management**: Monitor and manage account balance dynamically.
 - **Trade History**: Keep track of all trades and their outcomes.
 - **User-Friendly Interface**: A clean and intuitive interface for managing trades.
