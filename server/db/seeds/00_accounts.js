@@ -4,8 +4,8 @@ export async function seed(knex) {
 
   // Inserts seed entries
   await knex('account').insert([
-    { account: 'account1', token: null, currency: 'usd' },
-    { account: 'account2', token: null, usd: 'usd' },
-    { account: 'account3', token: null, usd: 'usd' },
+    { account: 'cr799393', token: null, currency: 'usd' },
+    { account: 'vrtc1859315', token: null, usd: 'usd' },
+    { account: 'cr79939381', token: null, usd: 'usd' },
   ]);
 }
