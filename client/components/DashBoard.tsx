@@ -4,20 +4,20 @@ import AccountBalance from './AccountBalance'
 import MarketSelection from './MarketSelection'
 import TradeAmountInput from './TradeAmount'
 import MartingaleTrading from './MartingaleTrading'
-import ActiveSymbols from './Symbols'
+
 import TicksHistory from './TicksHistory'
 import WebSocketTestComponent from './WebsocketTest'
+import Chart from './chart/chart'
 
 const Dashboard: React.FC = () => {
-  const [selectedMarket, setSelectedMarket] = useState('')
+  const [selectedMarket, setSelectedMarket] = useState('R_50')
   const [tradeAmount, setTradeAmount] = useState(10)
-  const markets = ['forex', 'commodities', 'indices', 'crypto', 'synthentic']
 
   return (
     <>
       <div className="p-4">
         <h1 className="mb-4 space-y-8 text-2xl font-bold">Dashboard</h1>
-        <CustomLineChart />
+        <Chart market={selectedMarket} />
         <AccountBalance />
         <TicksHistory />
       </div>

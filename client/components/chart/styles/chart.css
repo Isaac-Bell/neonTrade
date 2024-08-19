@@ -1,0 +1,11 @@
+.line-chart-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chartjs-render-monitor {
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  border-radius: 15px;
+}
