@@ -1,17 +1,12 @@
-// ActiveSymbols.tsx
-import { useEffect, useState } from 'react'
-
 interface Symbol {
   display_name: string
   symbol: string
   market: string
-  market_display_name: string
-  subgroup: string
-  subgroup_display_name: string
-  symbol_type: string 
+  submarket: string
+  trade_types: string[]
 }
 
-export const fetchActiveSymbols = async (): Promise<Symbol[]> => {
+export const fetchActiveSymbols = async (): Promise<symbol[]> => {
   const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089')
 
   return new Promise((resolve, reject) => {

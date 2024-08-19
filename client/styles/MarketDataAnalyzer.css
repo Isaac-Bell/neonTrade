@@ -1,0 +1,52 @@
+body {
+  background-color: #000000;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h2 {
+  color: #00ff00;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+select {
+  background-color: #000000;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+button {
+  background-color: #000000;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #00ff00;
+  color: #000000;
+}
+
+p {
+  font-size: 16px;
+}
+
+.analysis-results {
+  background-color: #000000;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 20px;
+  margin-top: 20px;
+}

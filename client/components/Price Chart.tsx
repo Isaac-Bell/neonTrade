@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import 'chart.js/auto'
+import MarketDataAnalyzer from './MarketDataAnalyzer'
 
 const PriceChart = () => {
   const [prices, setPrices] = useState<number[]>([])
@@ -63,7 +64,8 @@ const PriceChart = () => {
   return (
     <div>
       <h2>Live Price Data</h2>
-      <Line data={data} options={options} />
+      {/* <Line data={data} options={options} /> */}
+      <MarketDataAnalyzer />
     </div>
   )
 }
