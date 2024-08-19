@@ -10,6 +10,8 @@ const MarketDataAnalyzer = () => {
   const [ticksData, setTicksData] = useState([])
   const [result, setResult] = useState(null)
   const [isAuthorized, setIsAuthorized] = useState(false)
+
+  // DROPDOWNS
   const [marketOptions, setMarketOptions] = useState([])
   const [submarketOptions, setSubmarketOptions] = useState([])
   const [symbolOptions, setSymbolOptions] = useState([])
@@ -42,6 +44,7 @@ const MarketDataAnalyzer = () => {
     fetchSymbols()
   }, [])
 
+  // DROP DOWNS
   useEffect(() => {
     if (marketType) {
       const filteredSubmarkets = marketOptions
@@ -76,23 +79,24 @@ const MarketDataAnalyzer = () => {
           id: index, // Adding a unique identifier as a key
         }))
       setSymbolOptions(filteredSymbols)
-      console.log('Symbol Options:', filteredSymbols)
+      console.log('Symbol Options:', symbolOptions)
     } else {
       setSymbolOptions([])
     }
   }, [submarketType])
 
+  // Authorize Websocket
   useEffect(() => {
     const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=62894')
 
     ws.onopen = function () {
-      console.log('WebSocket Connected')
+      console.log('WebSocket for ticks Connected')
       ws.send(JSON.stringify({ authorize: authToken }))
     }
 
     ws.onmessage = function (msg) {
       const data = JSON.parse(msg.data)
-      console.log('WebSocket Message:', data)
+      console.log('Logged in as:', data.authorize.fullname)
       if (data.msg_type === 'authorize') {
         setIsAuthorized(true)
         console.log('Authorization successful:', data)
@@ -113,9 +117,7 @@ const MarketDataAnalyzer = () => {
 
   const handleMarketChange = (e) => {
     setMarketType(e.target.value)
-    console.log(marketType)
-    setSubmarketType('')
-    setSymbol('')
+    console.log('this is the new value', marketType)
   }
 
   const handleSubmarketChange = (e) => {
@@ -277,11 +279,11 @@ const MarketDataAnalyzer = () => {
           <table className="min-w-full bg-gray-900 text-white">
             <thead>
               <tr>
-                <th className="px-4 py-2">TRADE ID</th>
-                <th className="px-4 py-2">TIMESTAMP</th>
+                <th className="px-4 py-2">MARKET</th>
+                <th className="px-4 py-2">SUBMARKET</th>
                 <th className="px-4 py-2">TYPE</th>
-                <th className="px-4 py-2">QUANTITY</th>
-                <th className="px-4 py-2">PRICE</th>
+                <th className="px-4 py-2">STATUS</th>
+                <th className="px-4 py-2">SYMBOL</th>
                 <th className="px-4 py-2">STATUS</th>
               </tr>
             </thead>
@@ -291,14 +293,16 @@ const MarketDataAnalyzer = () => {
                   <td className="border px-4 py-2">
                     {trade.market_display_name}
                   </td>
+                  <td className="border px-4 py-2">
+                    {trade.submarket_display_name}
+                  </td>
                   <td className="border px-4 py-2">{trade.display_name}</td>
-                  <td className="border px-4 py-2">{trade.submarket}</td>
                   <td className="border px-4 py-2">
                     {' '}
                     {trade.exchange_is_open ? 'Open' : 'Closed'}{' '}
                   </td>
-                  {/* <td className="border px-4 py-2">{trade.price}</td>
-                  <td className="border px-4 py-2">{trade.status}</td> */}
+                  <td className="border px-4 py-2">{trade.symbol}</td>
+                  {/* <td className="border px-4 py-2">{trade.status}</td> */}
                 </tr>
               ))}
             </tbody>
