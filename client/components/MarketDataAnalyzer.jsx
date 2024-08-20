@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
+import { useTable, useSortBy } from 'react-table'
 import { fetchActiveSymbols } from './Symbols'
 import '../styles/MarketDataAnalyzer.css'
+import { symbolName } from 'typescript'
 
 const MarketDataAnalyzer = () => {
   const [authToken, setAuthToken] = useState('R8yyDzZYKW8kyyv')
   const [marketType, setMarketType] = useState('')
   const [submarketType, setSubmarketType] = useState('')
-  const [symbol, setSymbol] = useState([])
+  const [symbols, setSymbols] = useState([])
   const [ticksData, setTicksData] = useState([])
   const [result, setResult] = useState(null)
   const [isAuthorized, setIsAuthorized] = useState(false)
+  const [liveData, setLiveData] = useState({}) // Store live prices
 
   // DROPDOWNS
   const [marketOptions, setMarketOptions] = useState([])
@@ -20,8 +23,7 @@ const MarketDataAnalyzer = () => {
     const fetchSymbols = async () => {
       try {
         const symbols = await fetchActiveSymbols()
-        setSymbol(symbols)
-        console.log('here at the symbols', symbols)
+        setSymbols(symbols)
 
         // Extract unique market types with their display names
         const markets = Array.from(
@@ -48,9 +50,9 @@ const MarketDataAnalyzer = () => {
   useEffect(() => {
     if (marketType) {
       const filteredSubmarkets = marketOptions
-        .filter((symbol) => symbol.market_display_name === marketType)
-        .map((symbol, index) => ({
-          submarket_display_name: symbol.submarket_display_name,
+        .filter((symbols) => symbols.market_display_name === marketType)
+        .map((symbols, index) => ({
+          submarket_display_name: symbols.submarket_display_name,
           id: index, // Adding a unique identifier as a key
         }))
 
@@ -72,10 +74,10 @@ const MarketDataAnalyzer = () => {
   useEffect(() => {
     if (submarketType) {
       const filteredSymbols = marketOptions
-        .filter((symbol) => symbol.submarket_display_name === submarketType)
-        .map((symbol, index) => ({
-          display_name: symbol.display_name,
-          value: symbol.symbol,
+        .filter((symbols) => symbols.submarket_display_name === submarketType)
+        .map((symbols, index) => ({
+          display_name: symbols.display_name,
+          value: symbols.symbol,
           id: index, // Adding a unique identifier as a key
         }))
       setSymbolOptions(filteredSymbols)
@@ -115,55 +117,87 @@ const MarketDataAnalyzer = () => {
     }
   }, [authToken])
 
-  const handleMarketChange = (e) => {
-    setMarketType(e.target.value)
-    console.log('this is the new value', marketType)
-  }
+  // const handleMarketChange = (e) => {
+  //   setMarketType(e.target.value)
+  //   console.log('this is the new value', marketType)
+  // }
 
-  const handleSubmarketChange = (e) => {
-    setSubmarketType(e.target.value)
-    console.log(submarketType)
-    setSymbol('')
-  }
+  // const handleSubmarketChange = (e) => {
+  //   setSubmarketType(e.target.value)
+  //   console.log(submarketType)
+  //   setSymbol('')
+  // }
 
-  const handleSymbolChange = (e) => {
-    setSymbol(e.target.value)
-    console.log(Symbol)
-  }
+  // const handleSymbolChange = (e) => {
+  //   setSymbol(e.target.value)
+  //   console.log(Symbol)
+  // }
 
-  const fetchTicksData = () => {
-    if (isAuthorized && symbol) {
-      const ws = new WebSocket(
-        'wss://ws.binaryws.com/websockets/v3?app_id=62894',
-      )
-      ws.onopen = function () {
-        console.log('Requesting tick data for:', symbol)
-        ws.send(
-          JSON.stringify({
-            ticks_history: symbol,
-            count: 1000, // Max tick count
-            end: 'latest',
-            style: 'ticks',
-          }),
-        )
-      }
+  useEffect(() => {
+    const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=62894')
 
-      ws.onmessage = function (msg) {
-        const data = JSON.parse(msg.data)
-        console.log('Message received:', data)
-        if (data.history) {
-          setTicksData(data.history.prices)
-          console.log('Tick data:', data.history.prices)
-        }
-      }
-
-      ws.onerror = function (error) {
-        console.log('WebSocket Error:', error)
-      }
-    } else {
-      console.log('WebSocket not authorized yet or no symbol selected')
+    ws.onopen = () => {
+      console.log('WebSocket Connected')
+      symbols.forEach((symbol) => {
+        ws.send(JSON.stringify({ ticks: symbol.symbol }))
+      })
     }
-  }
+
+    ws.onmessage = (msg) => {
+      const data = JSON.parse(msg.data)
+      if (data.tick) {
+        setLiveData((prevData) => ({
+          ...prevData,
+          [data.tick.symbol]: data.tick.quote,
+        }))
+      }
+    }
+
+    ws.onerror = (error) => {
+      console.log('WebSocket Error:', error)
+    }
+
+    return () => {
+      ws.close()
+    }
+  }, [symbols])
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Market',
+        accessor: 'market_display_name',
+      },
+      {
+        Header: 'Submarket',
+        accessor: 'submarket_display_name',
+      },
+      {
+        Header: 'Type',
+        accessor: 'display_name',
+      },
+      {
+        Header: 'Status',
+        accessor: (row) => (row.exchange_is_open ? 'Open' : 'Closed'),
+        id: 'status',
+      },
+      {
+        Header: 'Symbol',
+        accessor: 'symbol',
+      },
+      {
+        Header: 'Live Price',
+        accessor: (row) => liveData[row.symbol] || 'Loading...',
+        id: 'livePrice',
+      },
+    ],
+    [liveData],
+  )
+
+  const data = useMemo(() => symbols, [symbols])
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data }, useSortBy)
 
   const analyzeData = () => {
     const result = findLongestConsecutiveEvenOrOdd(ticksData)
@@ -203,7 +237,7 @@ const MarketDataAnalyzer = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <h2>Market Data Analyzer</h2>
         <div>
           <label>
@@ -271,40 +305,49 @@ const MarketDataAnalyzer = () => {
             <p>Max Consecutive Odd Numbers: {result.maxOddStreak}</p>
           </div>
         )}
-      </div>
+      </div> */}
 
-      <div className="rounded-lg bg-gray-900 p-4 text-green-500 shadow-lg">
+      <div className="py-15 rounded-lg bg-gray-900 p-4 text-green-500 shadow-lg">
         <h2 className="mb-4 text-2xl font-bold">All Markets</h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-gray-900 text-white">
+          <table
+            {...getTableProps()}
+            className="min-w-full bg-gray-900 text-white"
+          >
             <thead>
-              <tr>
-                <th className="px-4 py-2">MARKET</th>
-                <th className="px-4 py-2">SUBMARKET</th>
-                <th className="px-4 py-2">TYPE</th>
-                <th className="px-4 py-2">STATUS</th>
-                <th className="px-4 py-2">SYMBOL</th>
-                <th className="px-4 py-2">STATUS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {symbol?.map((trade) => (
-                <tr key={trade.display_name} className="bg-gray-800">
-                  <td className="border px-4 py-2">
-                    {trade.market_display_name}
-                  </td>
-                  <td className="border px-4 py-2">
-                    {trade.submarket_display_name}
-                  </td>
-                  <td className="border px-4 py-2">{trade.display_name}</td>
-                  <td className="border px-4 py-2">
-                    {' '}
-                    {trade.exchange_is_open ? 'Open' : 'Closed'}{' '}
-                  </td>
-                  <td className="border px-4 py-2">{trade.symbol}</td>
-                  {/* <td className="border px-4 py-2">{trade.status}</td> */}
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      className="px-4 py-2"
+                    >
+                      {column.render('Header')}
+                      <span>
+                        {column.isSorted
+                          ? column.isSortedDesc
+                            ? ' 🔽'
+                            : ' 🔼'
+                          : ''}
+                      </span>
+                    </th>
+                  ))}
                 </tr>
               ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row) => {
+                prepareRow(row)
+                return (
+                  <tr {...row.getRowProps()} className="bg-gray-800">
+                    {row.cells.map((cell) => (
+                      <td {...cell.getCellProps()} className="border px-4 py-2">
+                        {cell.render('Cell')}
+                      </td>
+                    ))}
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
