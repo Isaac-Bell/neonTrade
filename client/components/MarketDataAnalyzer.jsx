@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { useTable, useSortBy } from 'react-table'
 import { fetchActiveSymbols } from './Symbols'
 import '../styles/MarketDataAnalyzer.css'
-import { symbolName } from 'typescript'
+import MarketDashboard from './charts/stacked-area-series/MarketDashboard'
 
 const MarketDataAnalyzer = () => {
   const [authToken, setAuthToken] = useState('R8yyDzZYKW8kyyv')
@@ -352,6 +352,8 @@ const MarketDataAnalyzer = () => {
           </table>
         </div>
       </div>
+
+      <MarketDashboard />
     </>
   )
 }

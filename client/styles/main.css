@@ -88,13 +88,13 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.graph-placeholder {
+/* .graph-placeholder {
   color: #fff;
   font-size: 24px;
   font-weight: bold;
   text-align: center;
   padding: 20px;
-}
+} */
 
 .balance-container {
   margin: 20px;

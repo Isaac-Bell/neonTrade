@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import WebSocketConnection from '../apis/websockets'
+import createWebSocketConnection from '../apis/websocketUtils'
 // import './WebSocketTestComponent.css'
 
 const WebSocketTestComponent = () => {
@@ -47,7 +47,7 @@ const WebSocketTestComponent = () => {
         </pre>
       </div>
       {/* This will invoke the WebSocket connection with the auth token and message */}
-      <WebSocketConnection
+      <createWebSocketConnection
         authToken={authToken}
         messageToSend={messageToSend}
         onMessage={handleMessage}
