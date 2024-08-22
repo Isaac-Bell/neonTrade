@@ -44,7 +44,7 @@ export const subscribeToTicks = (ws: WebSocket, symbol: string) => {
 export const requestTickHistory = (
   ws: WebSocket,
   symbol: string,
-  count: number = 1000,
+  count: number = 5000,
 ) => {
   if (ws.readyState === WebSocket.OPEN) {
     ws.send(
