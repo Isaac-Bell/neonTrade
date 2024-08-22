@@ -59,3 +59,31 @@ export const requestTickHistory = (
     console.error('WebSocket not open yet, unable to request tick history')
   }
 }
+
+export const fetchAllSymbols = (): Promise<any[]> => {
+  return new Promise((resolve, reject) => {
+    const ws = new WebSocket(WEBSOCKET_URL)
+
+    ws.onopen = () => {
+      console.log('WebSocket Connected')
+      ws.send(
+        JSON.stringify({ active_symbols: 'brief', product_type: 'basic' }),
+      )
+    }
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data)
+      if (data.error) {
+        reject(data.error.message)
+      } else if (data.active_symbols) {
+        resolve(data.active_symbols)
+      }
+      ws.close()
+    }
+
+    ws.onerror = (error) => {
+      console.error('WebSocket Error', error)
+      reject('Websocket Error')
+    }
+  })
+}

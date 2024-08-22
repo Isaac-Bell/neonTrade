@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import StackedAreaChart from './StackedAreaChart'
+import { fetchAllSymbols } from '../../../apis/websocketUtils'
 
 const MarketDashboard: React.FC = () => {
+  const [symbols, setSymbols] = useState<any[]>([])
+
+  useEffect(() => {
+    const loadSymbols = async () => {
+      try {
+        const allSymbols = await fetchAllSymbols()
+        setSymbols(allSymbols)
+      } catch (error) {
+        console.error('Failed to fetch symbols', error)
+      }
+    }
+
+    loadSymbols()
+  }, [])
+
   return (
     <div
       style={{
@@ -12,12 +28,16 @@ const MarketDashboard: React.FC = () => {
       }}
     >
       <div
-        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '20px',
+          padding: '20px',
+        }}
       >
-        <StackedAreaChart market="WLDAUD" />
-        <StackedAreaChart market="AAPL" />
-        <StackedAreaChart market="frxAUDCHF" />
-        <StackedAreaChart market="CRASH1000" />
+        {symbols.map((symbol) => (
+          <StackedAreaChart key={symbol.symbol} market={symbol.symbol} />
+        ))}
       </div>
       <div
         style={{

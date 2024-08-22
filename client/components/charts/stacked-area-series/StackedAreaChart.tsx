@@ -20,8 +20,8 @@ const StackedAreaChart: React.FC<StackedAreaChartProps> = ({ market }) => {
     if (chartContainerRef.current) {
       // Initialize the chart
       chartRef.current = createChart(chartContainerRef.current, {
-        width: 600,
-        height: 300,
+        width: 300,
+        height: 150,
         layout: {
           background: '#000000', // Black background
           textColor: '#00FF00', // Neon green text color
