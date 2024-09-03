@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import routes from './routes'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { SidebarProvider } from './components/SidebarContext'
+import { SidebarProvider } from './shared/SidebarContext'
 
 const router = createBrowserRouter(routes)
 const queryClient = new QueryClient()

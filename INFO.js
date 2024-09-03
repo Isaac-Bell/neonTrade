@@ -47,5 +47,7 @@ const safestBets = weightedArray.slice((weightedArray.length * 2) / 3)
 
 // Next Steps:
 // Advanced Trend Analysis: Integrate more advanced techniques such as moving averages or RSI (Relative Strength Index) to analyze trends over different timeframes.
+
 // Signal Generation: Implement logic to generate trading signals based on detected trends and probabilities. This could involve more complex statistical models or machine learning approaches to predict future price movements.
+
 // User Interface Enhancements: Add UI controls for users to select different timeframes, view different market types, and see detailed analysis (e.g., showing the market type, displaying arrows, changing colors based on trends, etc.).

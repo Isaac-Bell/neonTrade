@@ -48,6 +48,7 @@
     "reconnecting-websocket": "^4.4.0",
     "sqlite3": "^5.1.6",
     "superagent": "^8.1.2",
+    "technicalindicators": "^3.1.0",
     "three": "^0.165.0",
     "ws": "^8.17.0"
   },
