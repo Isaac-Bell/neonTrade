@@ -19,7 +19,7 @@ import {
 const Sidebar = ({ isOpen }) => {
   return (
     <div
-      className={`fixed h-screen ${isOpen ? 'w-64' : 'w-16'} bg-gray-900 text-green-500 transition-all duration-300`}
+      className={`fixed h-screen ${isOpen ? 'w-64' : 'w-160'} bg-gray-900 text-green-500 transition-all duration-300`}
     >
       <div className="p-4">
         <h2 className={`text-2xl font-bold ${!isOpen && 'hidden'}`}>

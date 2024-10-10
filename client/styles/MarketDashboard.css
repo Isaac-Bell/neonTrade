@@ -1,0 +1,30 @@
+.market-dashboard {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.chart-area {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.market-analysis {
+  background-color: #000000;
+  color: #00ff00;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.market-analysis h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.market-analysis p {
+  margin: 5px 0;
+  line-height: 1.5;
+}

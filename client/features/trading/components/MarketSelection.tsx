@@ -28,7 +28,7 @@ const MarketSelection: React.FC<MarketSelectionProps> = ({
 
   return (
     <div>
-      <h3>Select Market</h3>
+      <h3 className="text-green-500">Select Market</h3>
       <form>
         <select
           value={selectedMarket}
@@ -53,7 +53,7 @@ const MarketSelection: React.FC<MarketSelectionProps> = ({
       </form>
 
       <div>
-        <h2> Markets selected: {selectedMarket} </h2>
+        <h2 className="text-green-500"> Markets selected: {selectedMarket} </h2>
       </div>
     </div>
   )

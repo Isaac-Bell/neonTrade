@@ -13,6 +13,8 @@ server.use(express.json())
 //   res.send('Secured Resource')
 // })
 
+// server.use('/api/v1/trade', trade)
+
 server.get('/api/trades', async (req, res) => {
   try {
     const trades = await getAllTrades()

@@ -7,7 +7,7 @@ interface Symbol {
 }
 
 export const fetchActiveSymbols = async (): Promise<symbol[]> => {
-  const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089')
+  const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=64097')
 
   return new Promise((resolve, reject) => {
     ws.onopen = () => {

@@ -7,6 +7,7 @@ import CurrentTrades from './features/trading/components/CurrentTrades'
 // import MarketTrends from './components/MarketTrends'
 import PerformanceMetrics from './features/trading/components/PerformanceMetrics'
 import TicksHistory from './features/trading/components/TradeHistory'
+import MarketDashboard from './features/trading/components/MarketDashboard'
 // import PriceChart from './components/Price Chart'
 // import ActiveBots from './components/ActiveBots'
 // import TradeControls from './components/TradeControls'
@@ -22,7 +23,7 @@ const routes = createRoutesFromElements(
     <Route path="account-balance" element={<AccountBalance />} />
     <Route path="current-trades" element={<CurrentTrades />} />
     <Route path="dashboard" element={<Dashboard />} />
-    {/* <Route path="market-trends" element={<PriceChart />} /> */}
+    <Route path="market-trends" element={<MarketDashboard />} />
     <Route path="performance-metrics" element={<PerformanceMetrics />} />
     <Route path="ticks-history" element={<TicksHistory />} />
     {/* <Route path="active-bots" element={<ActiveBots />} />

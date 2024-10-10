@@ -5,7 +5,7 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { getFruits } from '../apis/fruits.ts'
+import { getFruits } from '../../../apis/fruits.ts'
 import { fetchTradeHistory } from '../apis/trades.ts'
 
 export function useFruits() {

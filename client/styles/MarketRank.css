@@ -1,0 +1,66 @@
+.market-rank {
+  background-color: #000; /* Black background */
+  color: #00ff00; /* Neon green text */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Neon green glow */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.market-rank h2 {
+  font-size: 24px;
+  text-align: center;
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.75);
+}
+
+.market-rank button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #003300; /* Dark green */
+  color: #00ff00; /* Neon green text */
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.market-rank button:hover {
+  background-color: #004400; /* Slightly lighter green on hover */
+}
+
+.market-rank table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.25); /* Light neon glow */
+}
+
+.market-rank th,
+.market-rank td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #00ff00; /* Neon green borders */
+}
+
+.market-rank th {
+  background-color: #002200; /* Darker green for header */
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.market-rank td {
+  background-color: #001100; /* Dark green for cells */
+  color: #00ff00;
+}
+
+.market-rank tr:nth-child(even) td {
+  background-color: #002200; /* Alternate row color */
+}
+
+.market-rank td:hover {
+  background-color: #003300; /* Hover effect on rows */
+  color: #ffffff; /* White text on hover */
+  transition: background-color 0.3s ease;
+}

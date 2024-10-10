@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import AccountBalance from './AccountBalance'
+
 import MarketSelection from './MarketSelection'
 
 import TicksHistory from './TradeHistory'
@@ -10,20 +10,21 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <div className="p-4">
-        <h1 className="mb-4 space-y-8 text-2xl font-bold">Dashboard</h1>
+      <div className="bg-gray-900">
+        <div className=" p-4">
+          <h1 className="mb-4 space-y-8 text-2xl font-bold">Dashboard</h1>
 
-        <AccountBalance />
-        <TicksHistory />
-      </div>
+          <TicksHistory />
+        </div>
 
-      <div>
-        <MarketSelection
-          selectedMarket={selectedMarket}
-          setSelectedMarket={setSelectedMarket}
-        />
+        <div>
+          <MarketSelection
+            selectedMarket={selectedMarket}
+            setSelectedMarket={setSelectedMarket}
+          />
+        </div>
+        <MarketDashboard />
       </div>
-      <MarketDashboard />
     </>
   )
 }
