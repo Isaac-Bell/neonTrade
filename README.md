@@ -1,4 +1,4 @@
-# 🚀 NeonTrade
+# 🚀 NeonTrade ## beta 0.075
 
 🌟 **A Full-Stack Trading App with Deriv API Integration**
 
